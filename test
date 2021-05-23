@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <sys/socker.h>
+#include <netdb.h>
+
+int main(int argc, char *argv[]){
+
+       int pitasocket;
+       int conecta;
+       
+       int porta;
+       int inicio = 0;
+       int final = 65535;
+       char *destino;
+       destino = argv[1];
+       
+       struct sockaddr_in alvo;
+    
+       for(porta=inicio;porta<final;porta++){
+
+       pitasoket = socket(_AF_INET,SOCK_STREAM,0);
+       alvo.sin_family = AF_INET;
+       alvo.sin_port = htons(porta);
+       alvo.sin_addr.s_addr = inet_addr(destino);
+
+       conecta = cennect(pitasoket, (struct sockaddr *)&alvo, sizeof alvo);
+
+       if(conecta == 0){
+             printf("Porta Aberta \n");
+             printf("Porta %d - status [ABERTA] \n,porta");
+             close(pitasocket);
+             close(conecta);
+
+      } 
+         //else {
+              printf("Porta Fechada \n");
+         
+          }//
+      }
+}
+
+    
